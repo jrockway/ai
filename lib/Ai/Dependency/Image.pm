@@ -1,7 +1,7 @@
 use MooseX::Declare;
 
 # | An image
-role Ai::Dependency::Image {
+role Ai::Dependency::Image with Ai::Linkable {
     has 'name' => (
         is       => 'ro',
         isa      => 'Str',
@@ -17,3 +17,5 @@ role Ai::Dependency::Image {
     requires 'image_format';
     requires 'image_data';
 }
+
+1;

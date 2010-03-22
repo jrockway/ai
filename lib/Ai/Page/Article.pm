@@ -12,6 +12,10 @@ role Ai::Page::Article with Ai::Page {
         return $self->article->title;
     }
 
+    method list_content {
+        return 'article';
+    }
+
     around list_dependencies {
         return $self->$orig, $self->article->list_dependencies;
     }

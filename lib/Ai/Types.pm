@@ -11,14 +11,12 @@ use MooseX::Types -declare => [qw{
     Page
     Dependency
     Link
-
+    Linkable
     Set
-
     Model
-
     IndexPage
-
     WithDependencies
+    Mapper
 }];
 
 role_type Site, { role => 'Ai::Site' };
@@ -29,6 +27,7 @@ role_type IndexPage, { role => 'Ai::Page::Index' };
 
 role_type Dependency, { role => 'Ai::Dependency' };
 role_type Link, { role => 'Ai::Link' };
+role_type Linkable, { role => 'Ai::Linkable' };
 
 role_type Set, { role => 'KiokuDB::Set' };
 coerce Set, from ArrayRef, via {
@@ -41,5 +40,6 @@ coerce Set, from ArrayRef, via {
 class_type Model, { class => 'Ai::Model' };
 
 role_type WithDependencies, { role => 'Ai::Role::WithDependencies' };
+role_type Mapper, { role => 'Ai::Mapper' };
 
 1;

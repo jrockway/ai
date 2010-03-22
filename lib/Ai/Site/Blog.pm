@@ -1,9 +1,10 @@
 use MooseX::Declare;
 
-class Ai::Site::Blog with (Ai::Site::Simple, Ai::Site::WithIndex) {
+class Ai::Site::Blog with Ai::Site::Simple {
     use Ai::Types qw(Article);
     use Ai::Page::Blog::Article;
     use Ai::Page::Blog::Index;
+    use Ai::Mapper::Blog;
 
     has 'title' => (
         is       => 'ro',
@@ -17,7 +18,7 @@ class Ai::Site::Blog with (Ai::Site::Simple, Ai::Site::WithIndex) {
         );
     }
 
-    method _build_url_mapper {
+    method _build_mapper {
         Ai::Mapper::Blog->new(
             site => $self,
         );

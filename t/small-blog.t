@@ -19,6 +19,7 @@ class Template with (Ai::Dependency) {
 
 my $blog = Ai::Site::Blog->new(
     title        => 'I CAN HAZ LOLCATS',
+    base_uri     => 'http://lolcat.blog/',
     dependencies => [
         Image->new(
             name  => 'cats.jpg',
@@ -57,5 +58,8 @@ ok $ap->does('Ai::Page'), 'got an article page';
 
 is_deeply [ sort map { $_->name } $ap->list_dependencies ],
   [sort qw/foo.tt nibbler.jpg cats.jpg/], 'got dependencies for article page';
+
+is $blog->mapper->path_for($ip), 'index.html', 'got path for index';
+is $blog->mapper->path_for($ap, 'article'), 'oh-hai-here-is-a-kitteh.html';
 
 done_testing;

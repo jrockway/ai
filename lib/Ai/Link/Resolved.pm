@@ -1,6 +1,6 @@
 use MooseX::Declare;
 
-class Ai::Link::Resolved with Ai::Link {
+class Ai::Link::Resolved with (Ai::Link, Ai::Linkable) {
     use Ai::Types qw(Dependency);
 
     has [qw/type name namespace/] => (
