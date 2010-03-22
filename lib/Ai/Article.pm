@@ -1,6 +1,6 @@
 use MooseX::Declare;
 
-role Ai::Article with KiokuDB::Role::ID::Content {
+role Ai::Article with (KiokuDB::Role::ID::Content, Ai::Role::WithDependencies) {
     use Digest::SHA1 qw(sha1_hex);
 
     has [qw/title content/] => (
